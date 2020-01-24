@@ -118,7 +118,10 @@
       if (screen.active && [_activeScreens containsObject:screen]) {
         [self detachScreen:screen];
         // disable interactions for the duration of transition
-        screen.userInteractionEnabled = NO;
+
+        // Override this behavior as it swallows touches for transparentCard type stacks
+        // https://github.com/kmagiera/react-native-screens/issues/61#issuecomment-543956667
+        screen.userInteractionEnabled = YES;
       }
     }
 
