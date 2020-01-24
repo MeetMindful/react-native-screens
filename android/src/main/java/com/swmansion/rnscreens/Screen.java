@@ -132,7 +132,9 @@ public class Screen extends ViewGroup implements ReactPointerEventsView {
 
   @Override
   public PointerEvents getPointerEvents() {
-    return mTransitioning ? PointerEvents.NONE : PointerEvents.AUTO;
+    // Without this change, transparentCard type screens lose touches on Android
+    // https://github.com/kmagiera/react-native-screens/issues/61#issuecomment-525418749
+    return PointerEvents.AUTO;
   }
 
   @Override
